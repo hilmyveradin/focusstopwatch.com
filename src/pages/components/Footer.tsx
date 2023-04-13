@@ -9,6 +9,7 @@ const Footer = () => {
       position="fixed"
       bottom="0"
       paddingBottom="8"
+      paddingTop={"8"}
     >
       <Text fontSize="sm">
         made with ❤️ by{" "}

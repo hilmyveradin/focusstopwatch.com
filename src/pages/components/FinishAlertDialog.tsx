@@ -16,16 +16,16 @@ interface FinishAlertDialogProps {
   onConfirm: () => void;
 }
 
-const FinishAlertDialog: React.FC<FinishAlertDialogProps> = ({
+const FinishAlertDialog = (props: FinishAlertDialogProps) => {
 
-  isOpen,
-  onClose,
-  onConfirm,
-}) => (
+  const cancelRef = React.useRef(null)
+
+  return (
+    <>
   <AlertDialog
-    isOpen={isOpen}
-    leastDestructiveRef={undefined}
-    onClose={onClose}
+    isOpen={props.isOpen}
+    leastDestructiveRef={cancelRef}
+    onClose={props.onClose}
   >
     <AlertDialogOverlay>
       <AlertDialogContent>
@@ -37,16 +37,18 @@ const FinishAlertDialog: React.FC<FinishAlertDialogProps> = ({
           reset.
         </AlertDialogBody>
         <AlertDialogFooter>
-          <Button ref={undefined} onClick={onClose}>
+          <Button ref={undefined} onClick={props.onClose}>
             Cancel
           </Button>
-          <Button colorScheme="red" onClick={onConfirm} ml={3}>
+          <Button colorScheme="red" onClick={props.onConfirm} ml={3}>
             Yes, Finish
           </Button>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialogOverlay>
   </AlertDialog>
-);
+  </>
+  )
+}
 
 export default FinishAlertDialog;
