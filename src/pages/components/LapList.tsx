@@ -11,19 +11,25 @@ interface LapListProps {
   laps: Lap[];
 }
 
-const LapList: React.FC<LapListProps> = ({ laps }) => (
-  <List spacing={3} mt={4} borderRadius="md">
-    {laps.map((lap) => (
-      <ListItem
-        key={lap.lapNumber}
-        borderRadius="md"
-        p={2}
-        bgColor={"gray.100"}
-      >
-        Lap {lap.lapNumber}: {lap.time}
-      </ListItem>
-    ))}
-  </List>
-);
+const LapList = (props: LapListProps) => {
+  if (!props.laps) {
+    return null;
+  }
+
+  return (
+    <List spacing={3} mt={4} borderRadius="md">
+      {props.laps.map((lap) => (
+        <ListItem
+          key={lap.lapNumber}
+          borderRadius="md"
+          p={2}
+          bgColor={"gray.100"}
+        >
+          Lap {lap.lapNumber}: {lap.time}
+        </ListItem>
+      ))}
+    </List>
+  );
+};
 
 export default LapList;

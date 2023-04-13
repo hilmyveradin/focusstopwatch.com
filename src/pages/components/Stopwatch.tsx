@@ -11,7 +11,7 @@ interface Lap {
   time: string;
 }
 
-const Stopwatch: React.FC = () => {
+const Stopwatch = () => {
   const [time, setTime] = useState<number>(0);
   const [isRunning, setIsRunning] = useState<boolean>(false);
   const [laps, setLaps] = useState<Lap[]>([]);
