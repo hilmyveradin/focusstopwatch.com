@@ -18,7 +18,7 @@ const LapList: React.FC<LapListProps> = ({ laps }) => (
         key={lap.lapNumber}
         borderRadius="md"
         p={2}
-        bgColor={useColorModeValue("gray.100", "gray.700")}
+        // bgColor={useColorModeValue("gray.100", "gray.700")}
       >
         Lap {lap.lapNumber}: {lap.time}
       </ListItem>

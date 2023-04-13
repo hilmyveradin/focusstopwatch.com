@@ -17,6 +17,7 @@ interface FinishAlertDialogProps {
 }
 
 const FinishAlertDialog: React.FC<FinishAlertDialogProps> = ({
+
   isOpen,
   onClose,
   onConfirm,
