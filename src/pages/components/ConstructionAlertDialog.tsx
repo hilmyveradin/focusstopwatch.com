@@ -19,12 +19,10 @@ interface ConstructionAlertDialogProps {
   onClose: () => void;
 }
 
-const ConstructionAlertDialog: React.FC<ConstructionAlertDialogProps> = ({
-  isOpen,
-  onClose,
-}) => (
+const ConstructionAlertDialog = (props: ConstructionAlertDialogProps) => {
+  return (
   <>
-    <Modal isOpen={isOpen} onClose={onClose}>
+    <Modal isOpen={props.isOpen} onClose={props.onClose}>
       <ModalOverlay />
       <ModalContent>
         <ModalHeader>Feature is Under Construction</ModalHeader>
@@ -32,13 +30,14 @@ const ConstructionAlertDialog: React.FC<ConstructionAlertDialogProps> = ({
         <ModalBody>Please come back again later 😉</ModalBody>
 
         <ModalFooter>
-          <Button colorScheme="blue" mr={3} onClick={onClose}>
+          <Button colorScheme="blue" mr={3} onClick={props.onClose}>
             Okay
           </Button>
         </ModalFooter>
       </ModalContent>
     </Modal>
   </>
-);
+  )
+}
 
 export default ConstructionAlertDialog;
