@@ -33,7 +33,7 @@ export default function Index() {
 
   return (
     <>
-      <Container maxWidth={"720px"} bgColor={"red"}>
+      <Container maxWidth={"720px"}>
         <NavigationBar />
         <Center paddingTop={100}>
           <Stopwatch />
