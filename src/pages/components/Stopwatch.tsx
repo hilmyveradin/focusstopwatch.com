@@ -13,6 +13,7 @@ interface Lap {
 
 const Stopwatch = () => {
   const [time, setTime] = useState<number>(0);
+  const [startTime, setStartTime] = useState<number>(0);
   const [isRunning, setIsRunning] = useState<boolean>(false);
   const [laps, setLaps] = useState<Lap[]>([]);
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -29,14 +30,18 @@ const Stopwatch = () => {
 
   useEffect(() => {
     if (isRunning) {
-      const interval = setInterval(() => {
-        setTime((prevTime) => prevTime + 1000);
-      }, 1000);
-      return () => clearInterval(interval);
+      const tick = () => {
+        setTime(performance.now() - startTime);
+        requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
     }
-  }, [isRunning]);
+  }, [isRunning, startTime]);
 
-  const start = () => setIsRunning(true);
+  const start = () => {
+    setStartTime(performance.now() - time);
+    setIsRunning(true);
+  };
 
   const lapAndReset = () => {
     setLaps((prevLaps) => [
